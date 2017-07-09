@@ -21,7 +21,8 @@ contract RKCToken is StandardToken, Ownable {
 
     //---------------------   Constants   ------------------------//
     bool public constant TEST_MODE = true;
-    uint public constant INITIAL_SUPPLY = 15000000 * 1000000000000000000; // 15 mln RKC. Impossible to mint more than this
+    uint public constant atto = 1000000000000000000;
+    uint public constant INITIAL_SUPPLY = 15000000 * atto; // 15 mln RKC. Impossible to mint more than this
     address public constant teamWallet = (TEST_MODE) ? 0x365c9a1ea2370c7573f0c61c0f5917920472be91 : 0x365c9a1ea2370c7573f0c61c0f5917920472be91; // TODO: replace with team's multisig address
     // Made up ICO address (designating the token pool reserved for ICO, no one has access to it)
     address public constant ico_address = 0x1C01C01C01C01C01C01C01C01C01C01C01C01C01;
@@ -111,7 +112,7 @@ contract RKCToken is StandardToken, Ownable {
     // Formula for the dynamic price change algorithm
     function calculateCurrentPrice(uint attoTokensBought) constant returns (uint result) {
         // see http://www.wolframalpha.com/input/?i=f(x)+%3D+395500000+%2F+(x+%2B+150000)+-+136
-        return (395500000 / ((attoTokensBought / 1000000000000000000) + 150000)).sub(136); // mixing safe and usual math here because the division will throw on inconsistency
+        return (395500000 / ((attoTokensBought / atto) + 150000)).sub(136); // mixing safe and usual math here because the division will throw on inconsistency
     }
 
     // ***************************************************************************
@@ -164,7 +165,16 @@ contract RKCToken is StandardToken, Ownable {
             balances[0x0333333333333333333333333333333333333333] = 300;
             current_supply = 100+200+300;
         } else {
-            // TODO: replace addresses and shares
+            // TODO: replace with the real ones
+            balances[0x0111111111111111111111111111111111111111] = 7508811 * atto;
+            balances[0x0222222222222222222222222222222222222222] = 4025712 * atto;
+            balances[0x0333333333333333333333333333333333333333] = 300275 * atto;
+            balances[0x0444444444444444444444444444444444444444] = 150000 * atto;
+            balances[0x0555555555555555555555555555555555555555] = 150000 * atto;
+            balances[0x0666666666666666666666666666666666666666] = 90000 * atto;
+            balances[0x0777777777777777777777777777777777777777] = 75000 * atto;
+            balances[0x0888888888888888888888888888888888888888] = 202 * atto;
+            current_supply = (7508811 + 4025712 + 300275 + 150000 + 150000 + 90000 + 75000 + 202) * atto;
         }
 
         // Sending the rest to ICO pool
