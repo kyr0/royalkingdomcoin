@@ -23,9 +23,9 @@ contract RKCToken is StandardToken, Ownable {
     bool public constant TEST_MODE = false;
     uint public constant atto = 1000000000000000000;
     uint public constant INITIAL_SUPPLY = 15000000 * atto; // 15 mln RKC. Impossible to mint more than this
-    address public constant teamWallet = (TEST_MODE) ? 0x365c9a1ea2370c7573f0c61c0f5917920472be91 : 0xb79f963f200f85d0e3dd60c82abb8f80b5869cb9;
+    address public constant teamWallet = (TEST_MODE) ? 0x365C9a1ea2370C7573f0c61C0F5917920472BE91 : 0xb79F963f200f85D0e3dD60C82ABB8F80b5869CB9;
     // Made up ICO address (designating the token pool reserved for ICO, no one has access to it)
-    address public constant ico_address = 0x1C01C01C01C01C01C01C01C01C01C01C01C01C01;
+    address public constant ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
     uint public constant ICO_START_TIME = 1499724000;
 
     //----------------------  Variables  -------------------------//
@@ -165,14 +165,14 @@ contract RKCToken is StandardToken, Ownable {
             balances[0x0333333333333333333333333333333333333333] = 300;
             current_supply = 100+200+300;
         } else {
-            balances[0x7a3c869603e28b0242c129440c9dd97f8a5bee80] = 7508811 * atto;
-            balances[0x24a541deae0fc87c990a208de28a293fb2a982d9] = 4025712 * atto;
-            balances[0xecf843458e76052e6363ffb78c7535cd87aa3ab2] = 300275 * atto;
-            balances[0x947963ed2da750a0712ae0bf96e08c798813f277] = 150000 * atto;
-            balances[0x82bc8452ab76fba446e16b57c080f5258f557734] = 150000 * atto;
-            balances[0x0959ed48d55e580bb58df6e5ee01baa787d80848] = 90000 * atto;
-            balances[0x530a8016fb5b3d7a0f92910b4814e383835bd51e] = 75000 * atto;
-            balances[0xc3e934d3ade0ab9f61f824a9a824462c790e47b0] = 202 * atto;
+            balances[0x7A3c869603E28b0242c129440c9dD97F8A5bEe80] = 7508811 * atto;
+            balances[0x24a541dEAe0Fc87C990A208DE28a293fb2A982d9] = 4025712 * atto;
+            balances[0xEcF843458e76052E6363fFb78C7535Cd87AA3AB2] = 300275 * atto;
+            balances[0x947963ED2da750a0712AE0BF96E08C798813F277] = 150000 * atto;
+            balances[0x82Bc8452Ab76fBA446e16b57C080F5258F557734] = 150000 * atto;
+            balances[0x0959Ed48d55e580BB58df6E5ee01BAa787d80848] = 90000 * atto;
+            balances[0x530A8016fB5B3d7A0F92910b4814e383835Bd51E] = 75000 * atto;
+            balances[0xC3e934D3ADE0Ab9F61F824a9a824462c790e47B0] = 202 * atto;
             current_supply = (7508811 + 4025712 + 300275 + 150000 + 150000 + 90000 + 75000 + 202) * atto;
         }
 
