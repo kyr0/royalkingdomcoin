@@ -20,7 +20,7 @@ contract RKCToken is StandardToken, Ownable {
     uint public decimals = 18;
 
     //---------------------   Constants   ------------------------//
-    bool public constant TEST_MODE = true;
+    bool public constant TEST_MODE = false;
     uint public constant atto = 1000000000000000000;
     uint public constant INITIAL_SUPPLY = 15000000 * atto; // 15 mln RKC. Impossible to mint more than this
     address public constant teamWallet = (TEST_MODE) ? 0x365c9a1ea2370c7573f0c61c0f5917920472be91 : 0xb79f963f200f85d0e3dd60c82abb8f80b5869cb9;
