@@ -3,6 +3,8 @@ pragma solidity ^0.4.8;
 import "./zeppelin/token/StandardToken.sol";
 import "./zeppelin/ownership/Ownable.sol";
 
+/////////////////////////// Test Version ///////////////////////////
+
 // Royal Kingdom Coin Token
 // www.royalkingdomcoin.com
 //
@@ -11,7 +13,7 @@ import "./zeppelin/ownership/Ownable.sol";
 //
 // The uints are all in wei and atto tokens (*10^-18)
 
-contract RKCToken is StandardToken, Ownable {
+contract RKCTokenTest is StandardToken, Ownable {
     using SafeMath for uint;
 
     //--------------   Info for ERC20 explorers  -----------------//
@@ -20,10 +22,10 @@ contract RKCToken is StandardToken, Ownable {
     uint public decimals = 18;
 
     //---------------------   Constants   ------------------------//
-    bool public constant TEST_MODE = false;
+    bool public constant TEST_MODE = true;
     uint public constant atto = 1000000000000000000;
     uint public constant INITIAL_SUPPLY = 15000000 * atto; // 15 mln RKC. Impossible to mint more than this
-    address public constant teamWallet = 0xb79F963f200f85D0e3dD60C82ABB8F80b5869CB9;
+    address public constant teamWallet = 0x365C9a1ea2370C7573f0c61C0F5917920472BE91;
     // Made up ICO address (designating the token pool reserved for ICO, no one has access to it)
     address public constant ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
     uint public constant ICO_START_TIME = 1499724000;
@@ -55,7 +57,7 @@ contract RKCToken is StandardToken, Ownable {
     // ***************************************************************************
 
     // Constructor
-    function RKCToken() {
+    function RKCTokenTest() {
         // Some percentage of the tokens is already reserved by early employees and investors
         // Here we're initializing their balances
         distributePreSoldShares();
@@ -159,15 +161,10 @@ contract RKCToken is StandardToken, Ownable {
         preSoldSharesDistributed = true;
 
         // Values are in atto tokens
-        balances[0x7A3c869603E28b0242c129440c9dD97F8A5bEe80] = 7508811 * atto;
-        balances[0x24a541dEAe0Fc87C990A208DE28a293fb2A982d9] = 4025712 * atto;
-        balances[0xEcF843458e76052E6363fFb78C7535Cd87AA3AB2] = 300275 * atto;
-        balances[0x947963ED2da750a0712AE0BF96E08C798813F277] = 150000 * atto;
-        balances[0x82Bc8452Ab76fBA446e16b57C080F5258F557734] = 150000 * atto;
-        balances[0x0959Ed48d55e580BB58df6E5ee01BAa787d80848] = 90000 * atto;
-        balances[0x530A8016fB5B3d7A0F92910b4814e383835Bd51E] = 75000 * atto;
-        balances[0xC3e934D3ADE0Ab9F61F824a9a824462c790e47B0] = 202 * atto;
-        current_supply = (7508811 + 4025712 + 300275 + 150000 + 150000 + 90000 + 75000 + 202) * atto;
+        balances[0x0111111111111111111111111111111111111111] = 100;
+        balances[0x0222222222222222222222222222222222222222] = 200;
+        balances[0x0333333333333333333333333333333333333333] = 300;
+        current_supply = 100+200+300;
 
         // Sending the rest to ICO pool
         balances[ico_address] = INITIAL_SUPPLY.sub(current_supply);
@@ -256,7 +253,7 @@ contract RKCToken is StandardToken, Ownable {
                 diff = ICO_START_TIME - block.timestamp;
             }
 
-            allowed = (current_supply / 20) * (diff / (60 * 60 * 24 * 30)); // 5% unlocked every month
+            allowed = (current_supply / 20) * ((diff / (60)) + 1); // 5% unlocked every minute, including first
 
             if (value > allowed) throw;
         }
