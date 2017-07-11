@@ -26,7 +26,7 @@ contract RKCToken is StandardToken, Ownable {
     address public constant teamWallet = 0xb79F963f200f85D0e3dD60C82ABB8F80b5869CB9;
     // Made up ICO address (designating the token pool reserved for ICO, no one has access to it)
     address public constant ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
-    uint public constant ICO_START_TIME = 1499724000;
+    uint public constant ICO_START_TIME = 1499810400;
 
     //----------------------  Variables  -------------------------//
     uint public current_supply = 0; // Holding the number of all the coins in existence
