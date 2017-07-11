@@ -13,3 +13,12 @@ How to test on testrpc
 * run `truffle test --network testrpc`
 
 You will probably also need `npm i web3` if you have an error message about web3 (I'll include it later in package.json)
+
+Verification with Etherscan
+===========================
+
+To concatenate the code, you need this command:
+
+```
+awk 1 contracts/zeppelin/SafeMath.sol contracts/zeppelin/token/ERC20Basic.sol contracts/zeppelin/token/BasicToken.sol contracts/zeppelin/token/ERC20.sol contracts/zeppelin/token/StandardToken.sol contracts/zeppelin/ownership/Ownable.sol contracts/RKCToken.sol | sed '/^\(pragma\|import\)/ d' > build/source-code-bundle.sol   
+```
