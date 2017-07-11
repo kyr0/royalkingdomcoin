@@ -11,7 +11,7 @@ import "./zeppelin/ownership/Ownable.sol";
 //
 // The uints are all in wei and atto tokens (*10^-18)
 
-contract RKCToken is StandardToken, Ownable {
+contract RKCTokenTest is StandardToken, Ownable {
     using SafeMath for uint;
 
     //--------------   Info for ERC20 explorers  -----------------//
@@ -51,6 +51,7 @@ contract RKCToken is StandardToken, Ownable {
     event ICOClosed();
     event PriceChanged(uint old_price, uint new_price);
     event SupplyChanged(uint supply, uint old_supply);
+    event RKCAcquired(address account, uint amount_in_wei, uint amount_in_rkc);
 
     // ***************************************************************************
 
@@ -107,6 +108,9 @@ contract RKCToken is StandardToken, Ownable {
 
         // Broadcasting price change event
         if (old_price != current_price_atto_tokens_per_wei) PriceChanged(old_price, current_price_atto_tokens_per_wei);
+
+        // Broadcasting the buying event
+        RKCAcquired(msg.sender, msg.value, tokens);
     }
 
     // Formula for the dynamic price change algorithm

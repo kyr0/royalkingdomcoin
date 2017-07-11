@@ -13,7 +13,7 @@ import "./zeppelin/ownership/Ownable.sol";
 //
 // The uints are all in wei and atto tokens (*10^-18)
 
-contract RKCTokenTest is StandardToken, Ownable {
+contract RKCToken is StandardToken, Ownable {
     using SafeMath for uint;
 
     //--------------   Info for ERC20 explorers  -----------------//
@@ -25,10 +25,10 @@ contract RKCTokenTest is StandardToken, Ownable {
     bool public constant TEST_MODE = true;
     uint public constant atto = 1000000000000000000;
     uint public constant INITIAL_SUPPLY = 15000000 * atto; // 15 mln RKC. Impossible to mint more than this
-    address public constant teamWallet = 0x365C9a1ea2370C7573f0c61C0F5917920472BE91;
+    address public teamWallet = 0x365C9a1ea2370C7573f0c61C0F5917920472BE91;
     // Made up ICO address (designating the token pool reserved for ICO, no one has access to it)
-    address public constant ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
-    uint public constant ICO_START_TIME = 1499724000;
+    address public ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
+    uint public constant ICO_START_TIME = 1499810400;
 
     //----------------------  Variables  -------------------------//
     uint public current_supply = 0; // Holding the number of all the coins in existence
@@ -53,6 +53,7 @@ contract RKCTokenTest is StandardToken, Ownable {
     event ICOClosed();
     event PriceChanged(uint old_price, uint new_price);
     event SupplyChanged(uint supply, uint old_supply);
+    event RKCAcquired(address account, uint amount_in_wei, uint amount_in_rkc);
 
     // ***************************************************************************
 
@@ -109,6 +110,9 @@ contract RKCTokenTest is StandardToken, Ownable {
 
         // Broadcasting price change event
         if (old_price != current_price_atto_tokens_per_wei) PriceChanged(old_price, current_price_atto_tokens_per_wei);
+
+        // Broadcasting the buying event
+        RKCAcquired(msg.sender, msg.value, tokens);
     }
 
     // Formula for the dynamic price change algorithm
