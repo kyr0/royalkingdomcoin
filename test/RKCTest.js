@@ -20,10 +20,6 @@ contract('RKCToken', (accounts) => {
         assertNumberVariable(['getAttoTokensAmountPerWei', 1], BN(2500));
         assertNumberVariable(['getAttoTokensAmountPerWei', 2], BN(5000));
 
-        // callFunction('getAttoTokensAmountPerWei', 1).then(function(value) {
-        //     assert.equal(value, 2500);
-        // });
-
         done();
     });
 
