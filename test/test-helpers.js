@@ -39,7 +39,7 @@ let assertVariable = exports.assertVariable = function(variableName, expectedVal
             callback();
         }
     });
-}
+};
 let assertNumberVariable = exports.assertNumberVariable = function(variableName, expectedBigNumber, callback) {
     let args = [];
     if (typeof variableName === 'object') {
@@ -52,7 +52,7 @@ let assertNumberVariable = exports.assertNumberVariable = function(variableName,
             callback();
         }
     });
-}
+};
 
 let BN = exports.BN = function(value) {
     return new BigNumber(value);
@@ -75,7 +75,7 @@ let promiseShouldThrow = exports.promiseShouldThrow = function(promise, fnName) 
 };
 let functionShouldThrow = exports.functionShouldThrow = function(fnName, ...args) {
     promiseShouldThrow(sendFunction(fnName, ...args), fnName);
-}
+};
 
 let _sequence = [];
 let _currentSequenceIndex = 0;
@@ -88,7 +88,7 @@ let next = exports.next = function(fn) {
         _sequence[_currentSequenceIndex]();
         _currentSequenceIndex++;
     }
-}
+};
 let sequence = exports.sequence = function(fn) {
     _sequence.push(fn);
-}
+};
