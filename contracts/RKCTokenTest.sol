@@ -58,7 +58,7 @@ contract RKCToken is StandardToken, Ownable {
     // ***************************************************************************
 
     // Constructor
-    function RKCTokenTest() {
+    function RKCToken() {
         // Some percentage of the tokens is already reserved by early employees and investors
         // Here we're initializing their balances
         distributePreSoldShares();
