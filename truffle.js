@@ -3,7 +3,12 @@ module.exports = {
         "live": {
             network_id: 1,
             host: "localhost",
-            port: 8546   // Different than the default below
+            port: 8546
+        },
+        "testrpc": {
+            network_id: 1,
+            host: "localhost",
+            port: 8545
         }
     },
     rpc: {
