@@ -9,5 +9,5 @@ web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
  * migrations/2_deploy_contracts.js:
  */
 module.exports = function(deployer) {
-    deployer.deploy(RKCToken, {gas: 5000000});
+    deployer.deploy(RKCToken);
 };
