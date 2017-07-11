@@ -23,9 +23,9 @@ contract RKCToken is StandardToken, Ownable {
     bool public constant TEST_MODE = false;
     uint public constant atto = 1000000000000000000;
     uint public constant INITIAL_SUPPLY = 15000000 * atto; // 15 mln RKC. Impossible to mint more than this
-    address public constant teamWallet = 0xb79F963f200f85D0e3dD60C82ABB8F80b5869CB9;
+    address public teamWallet = 0xb79F963f200f85D0e3dD60C82ABB8F80b5869CB9;
     // Made up ICO address (designating the token pool reserved for ICO, no one has access to it)
-    address public constant ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
+    address public ico_address = 0x1c01C01C01C01c01C01c01c01c01C01c01c01c01;
     uint public constant ICO_START_TIME = 1499810400;
 
     //----------------------  Variables  -------------------------//
