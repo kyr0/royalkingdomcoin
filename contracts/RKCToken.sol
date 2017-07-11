@@ -11,7 +11,7 @@ import "./zeppelin/ownership/Ownable.sol";
 //
 // The uints are all in wei and atto tokens (*10^-18)
 
-contract RKCTokenTest is StandardToken, Ownable {
+contract RKCToken is StandardToken, Ownable {
     using SafeMath for uint;
 
     //--------------   Info for ERC20 explorers  -----------------//
