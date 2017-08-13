@@ -1,6 +1,8 @@
 # royalkingdomcoin
 RKC Token Smart Contract
 
+Deployed contract is here: etherscan.io/address/0x6ccb56947ea1d6efdc81acfbacd8263ddfa9b202
+
 See https://github.com/uvarovserge/royalkingdomcoin/blob/master/contracts/RKCToken.sol
 
 How to test on testrpc
